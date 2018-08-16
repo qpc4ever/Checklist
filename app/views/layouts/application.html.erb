@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checklist</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default" style="background-color:blue;">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to "Checklist", root_path, class: 'navbar-brand' %>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <% if current_user.present? %>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "Log In", new_user_session_path %></li>
+            <% end %>
+        </ul>
+        <% if user_signed_in? %>
+          <%= link_to "New Item", new_item_path, class: 'navbar-text navbar-link navbar-right'%>
+        <% end %>
+      </div>
+    </nav>
+  <p class="notice" style="text-align:center"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+    <div class="container">
+    <%= yield %>
+    </div>
+   <div id="justpushtobottom"> 
+</div>
+
+<footer class="footer bg-dark" style="background-color:blue;" >
+        <%# <div class="container">
+            <div class="pull-right">
+                <nav class="navbar" style="background:transparent; color: black;">
+                    <nav class="nav navbar-nav pull-xs-left">
+                        <a class="nav-item nav-link" href="#">Home</a>
+                        <a class="nav-item nav-link" href="#">About</a>
+                        <a class="nav-item nav-link" href="#">Download App</a>
+                        <a class="nav-item nav-link" href="#">Help</a>
+                    </nav>
+                </nav>
+            </div> %>
+          <center>
+            <a href="https://www.facebook.com/QPCTv-752840761589207/"><i class="fa fa-facebook-official fa-2x"></i></a>
+            <%# <a href="#"><i class="fa fa-pinterest-p fa-2x"></i></a>
+            <a href="#"><i class="fa fa-twitter fa-2x"></i></a> %>
+            <a href="https://github.com/qpc4ever"><i class="fa fa-github fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/chris-mcglynn-73614714a/"><i class="fa fa-linkedin fa-2x"></i></a>
+
+            <p class="h6">
+                
+                <a href="https://cmcglynn.a2hosted.com/" target="_blank">&copy 2018 QPC</a>
+            </p>
+            </center>
+        <%# </div> %>
+    </footer>
+  </body>
+</html>
